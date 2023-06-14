@@ -40,14 +40,9 @@ target_link_libraries(Hadr04 ${Geant4_LIBRARIES} )
 # relies on these scripts being in the current working directory.
 #
 set(Hadr04_SCRIPTS
-    debug.mac
-    envHadronic.csh
-    envHadronic.sh 
-    graphite.mac 
-    hadr04.in 
-    run01.mac 
     vis.mac
     init_vis.mac
+    test.mac
   )
 
 foreach(_script ${Hadr04_SCRIPTS})

@@ -36,6 +36,11 @@
 
 #include "NeutronHPphysics.hh"
 
+#include "G4HadronPhysicsINCLXX.hh"
+#include "G4HadronPhysicsShieldingLEND.hh"
+#include "G4HadronPhysicsShielding.hh"
+#include "G4HadronPhysicsQGSP_BIC_AllHP.hh"
+
 // particles
 
 #include "G4BosonConstructor.hh"
@@ -60,7 +65,13 @@ PhysicsList::PhysicsList()
   new G4UnitDefinition( "um2/mg", "um2/mg","Surface/Mass", um*um/mg);  
     
   // Neutron Physics
-  RegisterPhysics( new NeutronHPphysics("neutronHP"));  
+  RegisterPhysics( new NeutronHPphysics("neutronHP"));
+
+  // Nuclear interactios
+  RegisterPhysics( new G4HadronPhysicsINCLXX());
+  
+  // // EM physics
+  // RegisterPhysics(new G4EmStandardPhysics());
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

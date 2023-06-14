@@ -1,0 +1,5 @@
+/gps/particle neutron
+/gps/position -6 0 0 cm
+/gps/direction 1 0 0
+/gps/energy 10 MeV
+/run/beamOn 1
