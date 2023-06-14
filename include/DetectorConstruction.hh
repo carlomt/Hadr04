@@ -65,7 +65,7 @@ class DetectorConstruction : public G4VUserDetectorConstruction
      const
      G4VPhysicalVolume* GetWorld()      {return fPBox;};           
                     
-     G4double           GetSize()       {return fBoxSize;};      
+     G4double           GetSize()       {return fBoxLength;};      
      G4Material*        GetMaterial()   {return fMaterial;};
      
      void               PrintParameters();
@@ -75,7 +75,8 @@ class DetectorConstruction : public G4VUserDetectorConstruction
      G4VPhysicalVolume* fPBox;
      G4LogicalVolume*   fLBox;
      
-     G4double           fBoxSize;
+     G4double           fBoxLength;
+     G4double           fBoxWidth;
      G4Material*        fMaterial;     
      
      DetectorMessenger* fDetectorMessenger;

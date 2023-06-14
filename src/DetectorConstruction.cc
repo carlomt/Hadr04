@@ -53,11 +53,14 @@
 
 DetectorConstruction::DetectorConstruction()
 :G4VUserDetectorConstruction(),
- fPBox(0), fLBox(0), fMaterial(0), fDetectorMessenger(0)
+ fPBox(nullptr), fLBox(nullptr), fMaterial(nullptr), fDetectorMessenger(nullptr)
 {
-  fBoxSize = 1*m;
+  fBoxLength = 10*cm;
+  fBoxWidth = 4*cm;
   DefineMaterials();
-  SetMaterial("Water_ts");  
+  // SetMaterial("Water_ts");
+  SetMaterial("G4_Pb");
+  
   fDetectorMessenger = new DetectorMessenger(this);
 }
 
@@ -146,7 +149,7 @@ G4VPhysicalVolume* DetectorConstruction::ConstructVolumes()
 
   G4Box*
   sBox = new G4Box("Container",                         //its name
-                   fBoxSize/2,fBoxSize/2,fBoxSize/2);   //its dimensions
+                   fBoxLength/2,fBoxWidth/2,fBoxWidth/2); //its dimensions
 
   fLBox = new G4LogicalVolume(sBox,                     //its shape
                              fMaterial,                 //its material
@@ -171,7 +174,7 @@ G4VPhysicalVolume* DetectorConstruction::ConstructVolumes()
 
 void DetectorConstruction::PrintParameters()
 {
-  G4cout << "\n The Box is " << G4BestUnit(fBoxSize,"Length")
+  G4cout << "\n The Box is " << G4BestUnit(fBoxLength,"Length")
          << " of " << fMaterial->GetName() 
          << "\n \n" << fMaterial << G4endl;
 }
@@ -200,7 +203,7 @@ void DetectorConstruction::SetMaterial(G4String materialChoice)
 
 void DetectorConstruction::SetSize(G4double value)
 {
-  fBoxSize = value;
+  fBoxLength = value;  
   G4RunManager::GetRunManager()->ReinitializeGeometry();
 }
 

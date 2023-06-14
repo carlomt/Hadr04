@@ -77,9 +77,8 @@ void RunAction::BeginOfRunAction(const G4Run*)
   
   // keep run condition
   if (fPrimary) { 
-    G4ParticleDefinition* particle 
-      = fPrimary->GetParticleGun()->GetParticleDefinition();
-    G4double energy = fPrimary->GetParticleGun()->GetParticleEnergy();
+    G4ParticleDefinition* particle = fPrimary->GetParticleDefinition();      
+    G4double energy = fPrimary->GetParticleEnergy();
     fRun->SetPrimary(particle, energy);
   }
              
